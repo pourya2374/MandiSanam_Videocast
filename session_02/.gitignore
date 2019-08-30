@@ -2,3 +2,4 @@ venv
 .idea
 secrets.py
 __pycache__
+*.mp4
