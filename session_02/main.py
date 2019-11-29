@@ -8,7 +8,7 @@ from network import get_html
 from utils import Video, get_unit_info
 
 
-course_url = 'https://maktabkhooneh.org/course/273-%DB%8C%D8%A7%D8%AF%DA%AF%DB%8C%D8%B1%DB%8C-%D9%85%D8%A7%D8%B4%DB%8C%D9%86-mk273/'
+course_url = 'https://maktabkhooneh.org/course/%D8%B4%D9%86%D8%A7%D8%AE%D8%AA-%D8%A7%D9%84%DA%AF%D9%88-mk594/'
 
 
 soup = bs(get_html(course_url), 'html.parser')
