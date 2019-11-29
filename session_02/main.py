@@ -8,7 +8,7 @@ from network import get_html
 from utils import Video, get_unit_info
 
 
-course_url = 'https://maktabkhooneh.org/course/%D8%B7%D8%B1%D8%A7%D8%AD%DB%8C-%D8%A7%D9%84%DA%AF%D9%88%D8%B1%DB%8C%D8%AA%D9%85-%D8%B9%D9%85%D9%84-mk582/'
+course_url = 'https://maktabkhooneh.org/course/273-%DB%8C%D8%A7%D8%AF%DA%AF%DB%8C%D8%B1%DB%8C-%D9%85%D8%A7%D8%B4%DB%8C%D9%86-mk273/'
 
 
 soup = bs(get_html(course_url), 'html.parser')
@@ -23,7 +23,7 @@ for video in soup.find_all('source', type="video/mp4"):
 
 # chapters
 for chapter in soup.find_all('div', 'chapter'):
-    chapter_name = chapter.find('h4').text.strip()
+    chapter_name = chapter.find('div', 'chapter__title').text.strip()
 
     for unit in chapter.find_all('a', 'chapter__unit'):
         file_name, video_url = get_unit_info(unit.get('href'))

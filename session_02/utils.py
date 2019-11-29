@@ -22,14 +22,10 @@ class Video:
 
 def get_unit_info(relative_url: str) -> Tuple[str, str]:
     soup = bs(get_html('https://maktabkhooneh.org{}'.format(relative_url)), 'html.parser')
-    unit_name = soup.find('div', 'unit-content__title').text.strip()
+    unit_name = soup.find('h1', 'unit-container__top-title').text.strip()
     unit_video = None
 
-    for item in soup.find_all('a'):
-        url = item.get('href', '')
-        search_result = re.search(r"https://cdn\.maktabkhooneh\.org/videos/hq\d+\.mp4", url)
-        if search_result:
-            unit_video = search_result.group()
-            print(unit_video)
-            break
+    for item in soup.find_all('video', 'js-player'):
+        url = item.get('poster', '')
+        unit_video = url.replace('thumbs/', 'videos/hq').replace('jpg', 'mp4')
     return unit_name, unit_video
